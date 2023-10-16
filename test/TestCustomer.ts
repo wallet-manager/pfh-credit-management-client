@@ -4,10 +4,9 @@ const CONFIG = loadConfig<MerchantConfig>('config');
 import BigNumber from "bignumber.js";
 
 import {CreditManagementClient} from '../src/CreditManagementClient';
-import { PreCreateCardRequest } from '../src/entities/admin/PreCreateCardRequest';
 import { CreateCustomerWithPreCreatedCardRequest } from '../src/entities/customer/CreateCustomerWithPreCreatedCardRequest'; 
+import { GetCustomerOfferingRequest } from '../src/entities/customer/GetCustomerOfferingRequest';
 
-import { Person } from '../src/entities/customer/E6Person';
 
 import { expect } from 'chai';
 import { AddressType, EmailState, EmailType, PhoneType, OfficialIdType} from '../src/entities/enums';
@@ -74,6 +73,19 @@ describe("Test Credit Management - Customer", async function () {
         const response = await client.createCustomerWithPreCreatedCard(request);
         console.info(JSON.stringify(response));
 
+    });
+
+
+    it("CU13 - Get Customer Offering", async function () {
+
+        const request: GetCustomerOfferingRequest = {
+            merchantId,
+            customerNumber: "3002X10000911930988"
+        }
+
+        const response = await client.getCustomerOffering(request);
+
+        console.info(JSON.stringify(response));
     });
 
 });

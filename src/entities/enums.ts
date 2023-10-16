@@ -56,3 +56,23 @@ export enum PreCreatedCardOrderStatus {
     Executing = 3,
     ExecutedSuccess = 4
 }
+
+export enum RepaymentMode {
+    Auto = 1,
+    ByRequest = 2
+}
+
+
+export enum CreditAdjustType {
+    Adjustment = 1,
+    SetValue = 2
+}
+
+export enum CreditAdjustStatus {
+    Rejected = -1,
+    Pending = 1,
+	Approved = 2,
+	Executing = 3,
+	ExecutedSuccess = 4,
+	ExecutedFailed = 5
+}
