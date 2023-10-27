@@ -6,6 +6,7 @@ import BigNumber from "bignumber.js";
 import { CreditManagementClient } from '../src/CreditManagementClient';
 import { AdjustCreditRequest } from '../src/entities/card/AdjustCreditRequest';
 import { ActivateCardRequest } from '../src/entities/card/ActivateCardRequest';
+import { GetSecureInfoRequest } from '../src/entities/card/GetSecureInfoRequest';
 
 import { Person } from '../src/entities/customer/E6Person';
 
@@ -55,6 +56,24 @@ describe("Test Credit Management - Cards", async function () {
         console.info(JSON.stringify(response));
 
     });
+
+    it("CA4 - Get Secure Info", async function () {
+        const req:ListCustomerCardsRequest = {
+            merchantId,
+            customerNumber: "3002X10000911930988"
+        };
+
+        const resp:any = await client.listCustomerCards(req);
+
+        const request:GetSecureInfoRequest = {
+            merchantId,
+            cardId : resp.result[0].id,
+        };
+
+        const response = await client.getSecureInfos(request);
+        console.info(JSON.stringify(response));
+
+    }).timeout(100000);
 
     it("CA5 - Activate Card", async function () {
 

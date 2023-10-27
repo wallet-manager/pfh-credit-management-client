@@ -25,6 +25,8 @@ import { AdjustCreditResult } from './entities/card/AdjustCreditResult';
 
 import { ActivateCardRequest } from './entities/card/ActivateCardRequest';
 
+import { GetSecureInfoRequest } from './entities/card/GetSecureInfoRequest';
+
 import { ListCustomerCardsRequest } from './entities/card/ListCustomerCardsRequest';
 
 import { AxiosInstance } from 'axios';
@@ -164,6 +166,17 @@ export class CreditManagementClient{
         return response.data;
     }
 
+    /**
+     * CA4
+     * @param request 
+     * @returns 
+     */
+        async getSecureInfos(request:GetSecureInfoRequest):Promise<Response<unknown>>{
+            const path = `/merchants/${request.merchantId}/cards/${request.cardId}/secure`;
+            console.info(`GET ${path}`);
+            const response = await this.instance.get(path, {timeout:this.timeout});
+            return response.data;
+        }
 
     /**
      * CA5
