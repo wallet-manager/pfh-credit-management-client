@@ -7,6 +7,8 @@ export interface CreateCustomerWithPreCreatedCardRequest {
 
     primaryPerson: Person
     address?: Address
+    deliveryAddress?: Address
+    
     email?: Email
     phone?: Phone
     officialId?: OfficialId

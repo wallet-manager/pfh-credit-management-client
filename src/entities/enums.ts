@@ -12,15 +12,20 @@ export enum AddressType {
     biz = "biz"
 }
 
+export enum DocumentType {
+    id_front = 1,
+    id_back = 2
+}
 
 export enum OfficialIdType {
-    tax = "tax",
-    nat = "nat",
-    ppt = "ppt",
-    dl = "dl",
-    suppl = "suppl",
-    alt = "alt",
-    other = "other"
+    social_insurance = "1",
+    tax_id = "2",
+    identity_card = "3",
+    driving_licence = "4",
+    share_code = "5",
+    voter_id = "6",
+    passport = "7",
+    other = "8"
 }
 
 export enum EmailType {
@@ -71,8 +76,8 @@ export enum CreditAdjustType {
 export enum CreditAdjustStatus {
     Rejected = -1,
     Pending = 1,
-	Approved = 2,
-	Executing = 3,
-	ExecutedSuccess = 4,
-	ExecutedFailed = 5
+    Approved = 2,
+    Executing = 3,
+    ExecutedSuccess = 4,
+    ExecutedFailed = 5
 }
