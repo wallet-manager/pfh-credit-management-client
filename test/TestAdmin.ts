@@ -34,7 +34,7 @@ describe("Test Credit Management - Admin", async function () {
 
         const request:PreCreateCardRequest = {
             merchantId,
-            count: 1,
+            count: 10,
             programName,
             cardProfileName,
             preCreatedCardOrderId: `P-${orderSeq}`

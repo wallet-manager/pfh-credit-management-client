@@ -18,14 +18,14 @@ export enum DocumentType {
 }
 
 export enum OfficialIdType {
-    social_insurance = "1",
-    tax_id = "2",
-    identity_card = "3",
-    driving_licence = "4",
-    share_code = "5",
-    voter_id = "6",
-    passport = "7",
-    other = "8"
+    social_insurance = 1,
+    tax_id = 2,
+    identity_card = 3,
+    driving_licence = 4,
+    share_code = 5,
+    voter_id = 6,
+    passport = 7,
+    other = 8
 }
 
 export enum EmailType {

@@ -5,5 +5,6 @@ export interface AdjustCreditRequest {
     merchantOrderId: string
     currency: string
     adjustCredit: string
+    createdBy: string
 
 }
