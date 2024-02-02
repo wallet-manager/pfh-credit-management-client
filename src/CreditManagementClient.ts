@@ -11,12 +11,10 @@ import { PreCreateCardRequest } from './entities/admin/PreCreateCardRequest';
 import { PreCreateCardResult } from './entities/admin/PreCreateCardResult';
 import { DecryptIdNumberRequest } from './entities/admin/DecryptIdNumberRequest';
 import { DecryptDocumentRequest } from './entities/admin/DecryptDocumentRequest';
+import { AdjustBalanceRequest } from './entities/admin/AdjustBalanceRequest';
 
 import { CreateCustomerWithPreCreatedCardRequest } from './entities/customer/CreateCustomerWithPreCreatedCardRequest';
 import { UploadDocumentRequest } from './entities/customer/UploadDocumentRequest';
-
-import { EnquiryPreCreateCardsRequest } from './entities/data/EnquiryPreCreateCardsRequest';
-import { EnquiryPreCreateCardsResult } from './entities/data/EnquiryPreCreateCardsResult';
 
 import { GetCustomerOfferingRequest } from './entities/customer/GetCustomerOfferingRequest';
 
@@ -32,6 +30,11 @@ import { GetPublicKeyForCardSecurityRequest } from './entities/card/GetPublicKey
 import { ListCustomerCardsRequest } from './entities/card/ListCustomerCardsRequest';
 import { SetCardPinRequest } from '../src/entities/card/SetCardPinRequest';
 import { SetCardPinRequestV2 } from '../src/entities/card/SetCardPinRequestV2';
+
+import { EnquiryPreCreateCardsRequest } from './entities/data/EnquiryPreCreateCardsRequest';
+import { EnquiryPreCreateCardsResult } from './entities/data/EnquiryPreCreateCardsResult';
+
+import { EnquiryCardTransactionsRequest } from './entities/data/EnquiryCardTransactionsRequest';
 
 import { AxiosInstance } from 'axios';
 
@@ -86,6 +89,18 @@ export class CreditManagementClient {
         console.info(`GET ${path}`);
         return await this.instance.get(path, { timeout: this.timeout, responseType: 'stream' });
     }
+
+  /**
+     * AD7
+     * @param request 
+     * @returns 
+     */
+  async adjustBalance(request: AdjustBalanceRequest): Promise<AxiosResponse> {
+    const path = `/admin/adjust-balance`;
+    console.info(`POST ${path}`);
+    const response = await this.instance.post(path, request, { timeout: this.timeout });
+    return response.data;
+}   
 
     /**
      * CU1-1
@@ -264,7 +279,22 @@ export class CreditManagementClient {
      * @returns 
      */
     async enquiryPreCreateCards(request: EnquiryPreCreateCardsRequest): Promise<Response<EnquiryPreCreateCardsResult>> {
-        const path = `/merchants/${request.merchantId}/pre-created-cards`;
+        const path = `/merchants/${request.merchantId}/card-transactions`;
+        console.info(path);
+        const response = await this.instance.get(path, {
+            timeout: this.timeout,
+            params: request
+        });
+        return response.data;
+    }
+
+    /**
+     * DA6
+     * @param request 
+     * @returns 
+     */
+    async enquiryCardTransactions(request: EnquiryCardTransactionsRequest): Promise<Response<unknown>> {
+        const path = `/merchants/${request.merchantId}/card-transactions`;
         console.info(path);
         const response = await this.instance.get(path, {
             timeout: this.timeout,

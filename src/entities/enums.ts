@@ -81,3 +81,15 @@ export enum CreditAdjustStatus {
     ExecutedSuccess = 4,
     ExecutedFailed = 5
 }
+
+export enum BalanceAdjustmentType {
+    Load = 1,
+    Withdraw = 2,
+    Fee = 3
+}
+
+export enum EnumRepaymentType {
+    ByScheduler = 1,
+    Manual = 2,
+    API = 3
+}

@@ -36,7 +36,7 @@ describe("Test Credit Management - Customer", async function () {
 
         const request:CreateCustomerWithPreCreatedCardRequest = {
             merchantId,
-            customerNumber: "3002X10001151140965",
+            customerNumber: "3002X10001213230325",
             primaryPerson: {
                 firstName: "EFG",
                 lastName: "testing"

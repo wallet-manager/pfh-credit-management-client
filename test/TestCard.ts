@@ -41,10 +41,10 @@ describe("Test Credit Management - Cards", async function () {
     it("CA2 - Adjust Credit", async function () {
         const request:AdjustCreditRequest = {
             merchantId,
-            customerNumber: "3002X10000911930988",
+            customerNumber: "3002X10001151050420",
             merchantOrderId: `P-${orderSeq}`,
             currency: "HKD",
-            adjustCredit: "1000",
+            adjustCredit: "100",
             createdBy: "charles"
         };
 
@@ -94,7 +94,8 @@ describe("Test Credit Management - Cards", async function () {
         const request:GetSecureInfoEncryptedRequest = {
             merchantId,
             cardId : resp.result[0].id,
-            publicKey: "MIIBCgKCAQEAoXHXlBmibeX4gj22DVM6175tLtZrvWq1H0QiiYFTM5sTbUYG+j4l2f3H6CaDUtEYg/tI/QAgmu/kUZIKqrL053eln2xYxjspR1JWMSkbrZPgdDpXQE0X8jH+CaT5DjDzrSTc1ZWqhXOSnL6EymGcpxkx/dgbkmTqRaRp5/uMmYTFpGnfFqHmo/QRo8K/8CpfPNm2eoWSSYJxGH7iRLgMT6Imseuoy0eRvIDPO7IgzVisgVrwKI/TKu4+PKjZyJFDNKM6M/YUW1BW87jsEpwYWk30HsMhB4DoL20DIXtcWMC0xOqwoObkVfqNSkKjsCYUKOMtvui2TCRoWZfvPzFS5wIDAQAB"
+            publicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoXHXlBmibeX4gj22DVM6175tLtZrvWq1H0QiiYFTM5sTbUYG+j4l2f3H6CaDUtEYg/tI/QAgmu/kUZIKqrL053eln2xYxjspR1JWMSkbrZPgdDpXQE0X8jH+CaT5DjDzrSTc1ZWqhXOSnL6EymGcpxkx/dgbkmTqRaRp5/uMmYTFpGnfFqHmo/QRo8K/8CpfPNm2eoWSSYJxGH7iRLgMT6Imseuoy0eRvIDPO7IgzVisgVrwKI/TKu4+PKjZyJFDNKM6M/YUW1BW87jsEpwYWk30HsMhB4DoL20DIXtcWMC0xOqwoObkVfqNSkKjsCYUKOMtvui2TCRoWZfvPzFS5wIDAQAB"
+            //publicKey: "MIIBCgKCAQEArJeaiP/BFkWYpWqpH+9pBmMTokJbjOi7RxQ/oxDiF7cLs8/sxTwRi2F8hsdff4ztzp6oloVO/kUds0gm4G3Ec6Bc3VYl+0lGJEYLa5fdyqv/Obh9E9ig0zRZAowSNzeww7bxCUETn2CJc91AvJiRZ0a4xJfz+WZHZZcsWYdsnrpCAynG6t5oIZ6iJ1T9T01kOOOmzl2gHlm2bfBhcJt8wzPR22yH18IQ8+x3aEa89eOhsumqgiUbV7Epyht9FpaU1cS0SQZgLM1SNIhmajmyWVmJaWasnpZGwxrBA45kQxeCdGW2wbBhvOcWmiZ3locrXg4iZP2SRDI0y2wOGVsGjwIDAQAB"
         };
 
         const response = await client.getSecureInfosEncrypted(request);
@@ -142,8 +143,8 @@ describe("Test Credit Management - Cards", async function () {
             customerNumber: "3002X10000911930988",
             securityCode: "548",
             //securityCode: "IBrFFh8XYxmJMr6HWRoGM3BS9LCq1jc71lRlF7SNwDuPbecA2RU2jjzl1QlbKqPMCicygpBzrq8QwtVSAUJxgmFdMjl8VBUCTriHtTaBBnL/iqrr/L0+0qIRw0sz4+ZnKhV1Z498DyaF3oj7aDDkIqNkMlUWMPWuhMWqKDKIk7M=",
-            pin: "ChbLfsr+YWq/Hz0eyVTVCW+WrkHZEhzD6XVGR8LBJ8dvj9LiN8DBqNOEIcXGfifYtLPIRPB8R5Cu596I61+fzpbIW+F5Q3Wgjti7A6g5s6rWjA+z6Afwqro4NN6tm6Bl1kuj95lMxNk4dc1pf3sjOlxDYIhFaM4yC3bk4m7/y7w=",
-            keySessionId: 1701834319065
+            pin: "baJHSq/gn+BZDQPNLB2IvIDuqtJ4ZGzco9A4XjajtmWL42npci2kpD8toAZb5jnB7buBRGxKqQJflyogdQLcV7GYdGd/mUKY5Qx8yVsQPd1q/qQqKY4bkTyU5tgtIBYHPYNKQ2iA0TWOEHDvBLK+A0GU9fPmYHHfEfukNBTfMP8=",
+            keySessionId: 1704768125669
         };
 
         const response = await client.setCardPinV2(request);

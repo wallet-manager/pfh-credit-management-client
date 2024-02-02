@@ -5,6 +5,7 @@ import BigNumber from "bignumber.js";
 
 import {CreditManagementClient} from '../src/CreditManagementClient';
 import { EnquiryPreCreateCardsRequest } from '../src/entities/data/EnquiryPreCreateCardsRequest';
+import { EnquiryCardTransactionsRequest } from '../src/entities/data/EnquiryCardTransactionsRequest';
 
 import { expect } from 'chai';
 
@@ -40,6 +41,29 @@ describe("Test Credit Management - Data", async function () {
 
         const response = await client.enquiryPreCreateCards(request);
         console.info(JSON.stringify(response));
+
+    });
+
+
+    it("DT6 - Enquiry card transactions", async function () {
+
+        const request:EnquiryCardTransactionsRequest = {
+            merchantId,
+            offset: 0,
+            limit: 20,
+            ascending: false,
+            creationTimeFrom: 0,
+            creationTimeTo: new Date().getTime(),
+            programName: programName,
+            customerNumber: '3002X10001151020530',
+            //transactionType: number
+            //isAuthorization: false,
+            skipCompletedAuthorization: false
+        };
+
+        console.info(request);
+        const response = await client.enquiryCardTransactions(request);
+        console.info("", response.result);
 
     });
 

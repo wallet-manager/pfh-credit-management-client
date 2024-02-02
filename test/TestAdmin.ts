@@ -12,6 +12,9 @@ import { expect } from 'chai';
 import { DecryptIdNumberRequest } from '../src/entities/admin/DecryptIdNumberRequest';
 import { DecryptDocumentRequest } from '../src/entities/admin/DecryptDocumentRequest';
 
+import { BalanceAdjustmentType } from '../src/entities/enums';
+import { AdjustBalanceRequest } from '../src/entities/admin/AdjustBalanceRequest';
+
 const clientConfig = CONFIG.clientConfig;
 const { privateKey } = CONFIG.identity;
 
@@ -57,7 +60,7 @@ describe("Test Credit Management - Admin", async function () {
     }).timeout(10000);
 
 
-    it("AD2 - Decrypte document", async function () {
+    it("AD3 - Decrypte document", async function () {
 
         const writer = fs.createWriteStream("abc.txt")
 
@@ -72,8 +75,67 @@ describe("Test Credit Management - Admin", async function () {
             writer.on('finish', resolve)
             writer.on('error', reject)
           })
-        
-
     }).timeout(10000);
+
+    it("AD7 - Balance Adjustment (LOAD)", async function () {
+
+        const request:AdjustBalanceRequest = {
+            merchantId: merchantId,
+            customerNumber: "3002X10001151020530",
+            type: BalanceAdjustmentType.Load,
+            amount: "100.00",
+            currencyCode: "HKD",
+            authCode: "192833",
+            memo: "TEST LOAD",
+            merchantOrderId: "TTF-" + new Date().getTime(),
+            attributes: [ {"name": "load", "value": "783872389"}],
+            createdBy: "charles"
+        };
+
+        const response = await client.adjustBalance(request);
+        console.info(JSON.stringify(response));
+        
+    }).timeout(10000);
+
+    it("AD7 - Balance Adjustment (WITHDRAW)", async function () {
+
+        const request:AdjustBalanceRequest = {
+            merchantId: merchantId,
+            customerNumber: "3002X10001151020530",
+            type: BalanceAdjustmentType.Withdraw,
+            amount: "50000.00",
+            currencyCode: "HKD",
+            authCode: "192832",
+            memo: "TEST WITHDRAW",
+            merchantOrderId: "TTF-" + new Date().getTime(),
+            attributes: [ {"name": "purchase-tx-id", "value": "21231654968741"}],
+            createdBy: "charles"
+        };
+
+        const response = await client.adjustBalance(request);
+        console.info(JSON.stringify(response));
+        
+    }).timeout(10000);
+
+    it("AD7 - Balance Adjustment (FEE)", async function () {
+
+        const request:AdjustBalanceRequest = {
+            merchantId: merchantId,
+            customerNumber: "3002X10001151020530",
+            type: BalanceAdjustmentType.Fee,
+            amount: "5.98",
+            currencyCode: "HKD",
+            authCode: "192832",
+            memo: "TEST TX FEE",
+            merchantOrderId: "TTF-" + new Date().getTime(),
+            attributes: [ {"name": "purchase-tx-id", "value": "21231654968741"}],
+            createdBy: "charles"
+        };
+
+        const response = await client.adjustBalance(request);
+        console.info(JSON.stringify(response));
+        
+    }).timeout(10000);
+
 
 });
