@@ -38,59 +38,66 @@ const info:CustomerInfo = {
     forcePasswordChange: true,
 
     // application
-    email: "eu99+12@18m.dev",
-    phoneCountryCode: "+852",
-    phoneNumber: "12345680",
-    firstName: "Charles",
-    lastName: "So",
-    idType: EnumDocumentType.IdentityCard,
-    idIssuedBy: "HK",
-    idNumber: "R123456",
-    dateOfBirth: "YYYY-MM-DD",
+    email: "eu99+13@18m.dev",  // email, email
+    phoneCountryCode: "+852", // phone, countryCode
+    phoneNumber: "12345681", // phone, phoneNumber
+    firstName: "Charles", // person
+    lastName: "So", // person
+    idType: EnumDocumentType.IdentityCard, // official id, type
+    idIssuedBy: "HK", // offical id, country
+    idNumber: "R123456", // offical id, primary
+    dateOfBirth: "YYYY-MM-DD", // person, dob (yyyyMMdd)
     programName: "PFH_WHITE_CARD",
     
     // answers
-    alias: "***N/A***",
-    title: EnumTitle.Mr,
-    gender: EnumGender.Male,
-    industry: EnumBusinessIndustry.Banking,
-    jobTitle: EnumJobTitle.Management,
-    chineseName: "***N/A***",
-    companyName: "***N/A***",
-    nationality: "CHN",
-    deliveryCity: "HK",
-    idTypeOthers: "",
-    idDateOfIssue: "2024-01-01",
-    maritalStatus: EnumMaritalStatus.Married,
-    usCitizenship: false,
-    educationLevel: EnumEducationLevel.University,
-    idDateOfExpiry: "***N/A***",
-    industryOthers: "",
-    jobTitleOthers: "",
-    otherIncomeHKD: "***N/A***",
-    deliveryCountry: "HKG",
-    residentialCity: "HK",
-    employmentStatus: EnumEmploymentStatus.Fulltime,
-    monthlySalaryHKD: "***N/A***",
-    residentialStatus: EnumResidentialStatus.SelfOwned,
-    deliveryPostalCode: "0000",
-    purposeForApplying: EnumPurposeApplying.Work,
-    residentialCountry: "HKG",
-    employmentStartDate: "",
-    deliveryAddressLine1: "line 1",
-    deliveryAddressLine2: "***N/A***",
-    deliveryAddressLine3: "***N/A***",
-    educationLevelOthers: "",
-    officeTelephoneNumber: "***N/A***",
-    residentialPostalCode: "0000",
-    authorizedToThirdParty: false,
-    residentialAddressLine1: "line 1",
-    residentialAddressLine2: "***N/A***",
-    residentialAddressLine3: "***N/A***",
-    residentialStatusOthers: "",
-    purposeForApplyingOthers: "",
-    sameAsResidentialAddress: true,
-    residentialTelephoneNumber: "123456"
+    alias: "***N/A***", // DEFAULT
+    title: EnumTitle.Mr,   //  person, Mr(mail), Ms(femail)
+    gender: EnumGender.Male, //  person, gender male/female
+    chineseName: "***N/A***", // DEFAULT
+    nationality: "CHN", // offical id, country
+    idTypeOthers: "", // DEFAULT
+    idDateOfIssue: "2024-01-01", // offcial id, issuanceDate
+    idDateOfExpiry: "***N/A***", // DEFAULT
+    employmentStatus: EnumEmploymentStatus.Fulltime, // DEFAULT
+    employmentStartDate: "", // DEFAULT
+    industry: EnumBusinessIndustry.Others, // DEFAULT
+    companyName: "***IMPORTED***", // DEFAULT
+    industryOthers: "***IMPORTED***", // DEFAULT
+    jobTitle: EnumJobTitle.Others, // DEFAULT
+    jobTitleOthers: "***IMPORTED***", // DEFAULT
+    monthlySalaryHKD: "***IMPORTED***", // DEFAULT
+    otherIncomeHKD: "***IMPORTED***", // DEFAULT
+    educationLevel: EnumEducationLevel.Others, // DEFAULT
+    educationLevelOthers: "***IMPORTED***", // DEFAULT
+    maritalStatus: EnumMaritalStatus.Single, // DEFAULT
+    usCitizenship: false, // DEFAULT
+    officeTelephoneNumber: "***IMPORTED****", // DEFAULT
+    
+    purposeForApplying: EnumPurposeApplying.Others, // DEFAULT
+    purposeForApplyingOthers: "***IMPORTED***", // DEFAULT
+    authorizedToThirdParty: false, // DEFAULT
+
+    residentialStatus: EnumResidentialStatus.Others, // DEFAULT
+    residentialStatusOthers: "***IMPORTED***", // DEFAULT
+
+    residentialAddressLine1: "line 1",  // address, line1
+    residentialAddressLine2: "line 2", // address, line2
+    residentialAddressLine3: "line 3", // address, line3
+    residentialPostalCode: "0000", // address, postalCode
+    residentialCity: "HK", // address, city
+    residentialCountry: "HKG", // address.country
+
+    deliveryAddressLine1: "line 1", // address, line1
+    deliveryAddressLine2: "line 2", // address, line2
+    deliveryAddressLine3: "line 3", // address, line3
+    deliveryPostalCode: "0000", // address, postalCode
+    deliveryCity: "HK", // address, city
+    deliveryCountry: "HKG", // address country
+
+    //
+    sameAsResidentialAddress: true, // DEFAULT
+    residentialTelephoneNumber: "***IMPORTED***" // DEFAULT
+    
 };
 
 const client = new PmpClient(privateKey, clientConfig, (request) => {

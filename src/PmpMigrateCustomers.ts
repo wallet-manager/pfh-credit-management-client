@@ -3,10 +3,10 @@ import { v4 as uuid } from 'uuid';
 
 
 import { loadConfig } from 'wallet-manager-client-utils';
-import { MerchantConfig } from '../src/entities/MerchantConfig'
+import { MerchantConfig } from './entities/MerchantConfig'
 const CONFIG = loadConfig<MerchantConfig>('config');
 
-import { PmpClient } from '../src/PmpClient';
+import { PmpClient } from './PmpClient';
 
 const clientConfig = CONFIG.clientConfig;
 const { privateKey } = CONFIG.identity;
@@ -221,17 +221,26 @@ export async function createCustomerAndApplication(info: CustomerInfo){
     if(response1.error){
         console.info(JSON.stringify(info));
         console.error("Response error of create customer", response1);
+        return response1;
+    }else{
+
+        const createCustomerResdult = <{customerId:string}> response1.result
+
+        // create customer application
+        const response2 = await createCustomerApplication(createCustomerResdult.customerId , info);
+        if(response2.error){
+            console.info(JSON.stringify(info));
+            console.error("Response error of create customer", response2);
+        }
+        return response2;
     }
-    const createCustomerResdult = <{customerId:string}> response1.result
 
-    // create customer application
-    const response2 = await createCustomerApplication(createCustomerResdult.customerId , info);
-    if(response2.error){
-        console.info(JSON.stringify(info));
-        console.error("Response error of create customer", response2);
+}
+
+
+export async function importCustomerAndApplication(infos: CustomerInfo[]){
+    for(const info of infos){
+        const result = await createCustomerAndApplication(info);
+        console.info(`create customer successfully ${info.email}, result ${JSON.stringify(result)}`);
     }
-
-    const createCustomerApplicationResult = <{applicationNumber:string}> response1.result
-
-    return createCustomerApplicationResult;
 }
