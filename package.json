@@ -5,6 +5,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "compile": "tsc",
+    "migrate": "npm run compile && node ./dist/src/PmpMigrateCustomersRunner.js",
+    "tcsp": "npm run compile && node ./dist/src/PmpMigrateTcspCustomersRunner.js",
     "start": "npm run compile && node ./dist/index.js",
     "test": "npx mocha",
     "release": "standard-version && git push --follow-tags && npm publish"
@@ -17,13 +19,19 @@
   "license": "ISC",
   "dependencies": {
     "bignumber.js": "^9.1.0",
+    "eccrypto": "^1.1.6",
+    "randomstring": "^1.3.0",
+    "uuid": "^9.0.1",
     "wallet-manager-client-utils": "^1.1.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.1",
     "@types/dateformat": "^5.0.0",
+    "@types/eccrypto": "^1.1.6",
     "@types/express": "^4.17.13",
     "@types/mocha": "^9.1.1",
+    "@types/randomstring": "^1.1.11",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "chai": "^4.3.6",

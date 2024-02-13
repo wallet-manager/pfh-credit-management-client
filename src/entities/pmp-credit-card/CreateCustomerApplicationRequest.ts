@@ -13,6 +13,8 @@ import {
 
 
 export interface CustomerInfo extends CustomerBase, ApplicationAnswers{
+    customerNumber: string
+
     merchantId: string,
     forcePasswordChange: boolean
 }

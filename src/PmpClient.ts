@@ -8,7 +8,8 @@ import { ClientConfig } from 'wallet-manager-client-utils/dist/src/entities/Conf
 
 import { CreateRewardRepaymentRequest } from './entities/pmp-reward/CreateRewardRepaymentRequest';
 import { CreateCustomerRequest } from './entities/pmp-credit-card/CreateCustomerRequest';
-import {CreateCustomerApplicationRequest} from './entities/pmp-credit-card/CreateCustomerApplicationRequest';
+import { CreateCustomerApplicationRequest} from './entities/pmp-credit-card/CreateCustomerApplicationRequest';
+import { CreateTcspAccountApplicationRequest } from './entities/pmp-tcsp/CreateTcspAccountRequest';
 
 import { AxiosInstance } from 'axios';
 
@@ -53,6 +54,12 @@ export class PmpClient {
         return response.data;
     }
 
+    async createTcspAccountApplication(request: CreateTcspAccountApplicationRequest): Promise<Response<unknown>> {
+        const path = `/merchants/${request.merchantId}/tcsp/applications`;
+        console.info(`POST ${path}`);
+        const response = await this.instance.post(path, request, { timeout: this.timeout });
+        return response.data;
+    }
 
 
     /**
