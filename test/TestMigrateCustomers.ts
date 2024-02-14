@@ -34,7 +34,9 @@ import {
 
 
 const info:CustomerInfo = {
-    merchantId: "6",
+    customerNumber: "",
+    
+    merchantId: 6,
     forcePasswordChange: true,
 
     // application
@@ -218,7 +220,7 @@ describe("Test Customer Migration", async function () {
         const referralCode = getReferralCode(programName);
 
         const request: CreateCustomerApplicationRequest = {
-            merchantId: "6",
+            merchantId: 6,
             applicationNumber, //String	Y
             customerId, //String	Y
             kycRef: {}, //JSON Object	N

@@ -1,6 +1,6 @@
 
 export interface CreateCustomerRequest {
-    merchantId: string,
+    merchantId: number,
     email: string,
     phoneCountryCode: string,
     phoneNumber: string,

@@ -15,7 +15,7 @@ import {
 export interface CustomerInfo extends CustomerBase, ApplicationAnswers{
     customerNumber: string
 
-    merchantId: string,
+    merchantId: number,
     forcePasswordChange: boolean
 }
 
@@ -28,7 +28,7 @@ export interface CreateCustomerApplicationRequest extends CustomerBase {
 }
 
 export interface CustomerBase{
-    merchantId: string,
+    merchantId: number,
     kycRef?: unknown, //JSON Object	N
     firstName: string, //String	Y
     lastName: string, //String	Y
