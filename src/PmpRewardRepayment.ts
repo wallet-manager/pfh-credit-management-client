@@ -21,6 +21,7 @@ const client = new PmpClient(privateKey, clientConfig, (request) => {
 });
 
 /*
+-- credit card pmp
 select json_agg(c) from (
 select 
 w.program_name as "programName",
@@ -31,7 +32,13 @@ w.balance as "balance",
 a.customer_id as "customerId"
 from pmp.asset_custody_wallets w join pmp.customer_accounts a on (w.customer_number = a.customer_number)
 where w.client_id like 'R%' and w.balance <> 0 
+order by w.cusotmer_number
 ) c
+*/
+
+/*
+-- wallet manager
+select client_id, balance from ledger.ledger_balances where client_id like 'R%' and balance <> 0 order by client_id
 */
 
 interface RewardRepayment{
